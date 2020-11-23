@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import {FormControl, Validators} from '@angular/forms';
 
 import { Issue } from '../issue';
 import { IssueService } from '../issue.service';
@@ -12,7 +13,10 @@ import { IssueService } from '../issue.service';
 })
 export class IssueDetailComponent implements OnInit {
   issue: Issue
+  titleFormControl = new FormControl('', [
+    Validators.required,
 
+  ]);
   constructor(
     private route: ActivatedRoute,
     private issueService: IssueService,
