@@ -1,9 +1,22 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-        <mat-label>Title</mat-label>
-        <input type="text" matInput [formControl]="titleFormControl">
-        <mat-error *ngIf="titleFormControl.hasError('required')">
-            Title is <strong>required</strong>
-        </mat-error>
-    </mat-form-field>
-</form>
+<div class="container">
+    <h2>New issue</h2>
+    <form class="example-form" (ngSubmit)="Submit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input type="text" matInput [formControl]="titleFormControl">
+            <mat-error *ngIf="titleFormControl.hasError('required')">
+                Title is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput [formControl]="titleFormControl"></textarea>
+            <mat-error *ngIf="titleFormControl.hasError('required')">
+                Description is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <div class="submit">
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

@@ -31,5 +31,7 @@ export class IssueDetailComponent implements OnInit {
     this.issueService.getIssue(id)
       .subscribe(issue => this.issue = issue);
   }
-
+  Submit(){
+    console.log('working');
+  }
 }

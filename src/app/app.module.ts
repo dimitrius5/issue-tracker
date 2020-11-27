@@ -9,6 +9,7 @@ import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
