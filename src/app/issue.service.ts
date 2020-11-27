@@ -4,6 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Issue } from './issue';
+import { LocalStorage } from '../app/storage/local-storage.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class IssueService {
   private issuesUrl = 'api/issues';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public storage: LocalStorage
   ) { }
 
   getIssue(id: number): Observable<Issue> {
@@ -21,6 +23,10 @@ export class IssueService {
       tap(_ => this.log(`fetched issue id=${id}`)),
       catchError(this.handleError<Issue>(`getIssue id=${id}`))
     );
+  }
+
+  save(issue: Issue) {
+    this.storage.setItem(issue.id.toString(), JSON.stringify(issue))
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

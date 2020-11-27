@@ -3,7 +3,7 @@
     <form class="example-form" (ngSubmit)="Submit()">
         <mat-form-field class="example-full-width">
             <mat-label>Title</mat-label>
-            <input type="text" matInput [formControl]="titleFormControl">
+            <input type="text"  matInput [formControl]="titleFormControl" [(ngModel)]="issue.title">
             <mat-error *ngIf="titleFormControl.hasError('required')">
                 Title is <strong>required</strong>
             </mat-error>

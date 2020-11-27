@@ -12,7 +12,11 @@ import { IssueService } from '../issue.service';
   styleUrls: ['./issue-detail.component.sass']
 })
 export class IssueDetailComponent implements OnInit {
-  issue: Issue
+  public issue: Issue = {
+    id: 1,
+    title: 'test title',
+    desc: 'test desc'
+  }
   titleFormControl = new FormControl('', [
     Validators.required,
 
@@ -23,6 +27,7 @@ export class IssueDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.issue);
     this.getIssue();
   }
 
@@ -32,6 +37,7 @@ export class IssueDetailComponent implements OnInit {
       .subscribe(issue => this.issue = issue);
   }
   Submit(){
-    console.log('working');
+    console.log(this.issue);
+    this.issueService.save(this.issue);
   }
 }
