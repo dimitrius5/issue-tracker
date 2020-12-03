@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Issue } from '../issue';
-import { ISSUES } from '../mock-issues';
+import { IssueService } from '../issue.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -10,9 +10,12 @@ import { from } from 'rxjs';
 })
 export class IssuesComponent implements OnInit {
 
-  issues = ISSUES;
+  issues = this.issueService.getAllIssues();
 
-  constructor() { }
+  constructor(
+    private issueService: IssueService,
+  ) {
+   }
 
   ngOnInit(): void {
   }

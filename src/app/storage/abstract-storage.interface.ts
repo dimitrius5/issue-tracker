@@ -10,4 +10,6 @@ export abstract class AbstractStorage implements Storage {
     abstract removeItem(key: string): void;
   
     abstract setItem(key: string, value: string): void;
+
+    abstract getAllItems(): Storage;
   }

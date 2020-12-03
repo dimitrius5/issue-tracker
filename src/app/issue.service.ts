@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Issue } from './issue';
 import { LocalStorage } from '../app/storage/local-storage.interface'
+import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,16 @@ export class IssueService {
 
   save(issue: Issue) {
     this.storage.setItem(issue.id.toString(), JSON.stringify(issue))
+  }
+
+  getAllIssues() : Array<Issue> {
+    const storageValues = Object.values(this.storage.getAllItems());
+    const issues: Array<Issue> = [];
+    for(const value of storageValues) {
+      issues.push(JSON.parse(value));
+    }
+
+    return issues;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

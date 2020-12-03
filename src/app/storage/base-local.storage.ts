@@ -36,4 +36,8 @@ export class BaseLocalStorage implements LocalStorage {
   setItem(key: string, value: string): void {
     this.storage.setItem(key, value);
   }
+
+  getAllItems(): Storage {
+    return localStorage;
+  }
 }
