@@ -19,7 +19,13 @@ export class IssueService {
   ) { }
 
   getIssue(id: number): Issue {
-    return JSON.parse(this.storage.getItem(id.toString()));
+    if(id) {
+      return JSON.parse(this.storage.getItem(id.toString()));
+    } else {
+      const issue = {} as Issue;
+      issue.id = Date.now();
+      return issue;
+    }
   }
 
   save(issue: Issue) {

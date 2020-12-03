@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {FormControl, Validators} from '@angular/forms';
@@ -11,7 +11,12 @@ import { IssueService } from '../issue.service';
   templateUrl: './issue-detail.component.html',
   styleUrls: ['./issue-detail.component.sass']
 })
+
 export class IssueDetailComponent implements OnInit {
+
+  @ViewChild('title') title:ElementRef;
+  @ViewChild('desc') desc:ElementRef;
+
   public issue = this.getIssue();
   titleFormControl = new FormControl(this.issue.title, [
     Validators.required,
@@ -25,7 +30,6 @@ export class IssueDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.issue);
     this.getIssue();
     console.log(this.issue);
   }
@@ -35,6 +39,8 @@ export class IssueDetailComponent implements OnInit {
     return this.issueService.getIssue(id);
   }
   Submit(){
+    this.issue.title = this.title.nativeElement.value;
+    this.issue.desc = this.desc.nativeElement.value;
     console.log(this.issue);
     this.issueService.save(this.issue);
   }
