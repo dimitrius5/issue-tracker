@@ -1,6 +1,6 @@
 <ul class="issues">
     <li *ngFor="let issue of issues">
-        <a routerLink="../detail">
+        <a routerLink="../detail/{{issue.id}}">
             <span class="badge">{{issue.title}}</span>
         </a>
     </li>

@@ -12,11 +12,7 @@ import { IssueService } from '../issue.service';
   styleUrls: ['./issue-detail.component.sass']
 })
 export class IssueDetailComponent implements OnInit {
-  public issue: Issue = {
-    id: 1,
-    title: 'test title',
-    desc: 'test desc'
-  }
+  public issue = this.getIssue();
   titleFormControl = new FormControl(this.issue.title, [
     Validators.required,
   ]);
@@ -34,10 +30,9 @@ export class IssueDetailComponent implements OnInit {
     console.log(this.issue);
   }
 
-  getIssue(): void {
+  getIssue(): Issue {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.issue = this.issueService.getIssue(1);
-    console.log(id);
+    return this.issueService.getIssue(id);
   }
   Submit(){
     console.log(this.issue);
