@@ -17,9 +17,11 @@ export class IssueDetailComponent implements OnInit {
     title: 'test title',
     desc: 'test desc'
   }
-  titleFormControl = new FormControl('', [
+  titleFormControl = new FormControl(this.issue.title, [
     Validators.required,
-
+  ]);
+  descFormControl = new FormControl(this.issue.desc, [
+    Validators.required,
   ]);
   constructor(
     private route: ActivatedRoute,
@@ -29,12 +31,13 @@ export class IssueDetailComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.issue);
     this.getIssue();
+    console.log(this.issue);
   }
 
   getIssue(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.issueService.getIssue(id)
-      .subscribe(issue => this.issue = issue);
+    this.issue = this.issueService.getIssue(1);
+    console.log(id);
   }
   Submit(){
     console.log(this.issue);
