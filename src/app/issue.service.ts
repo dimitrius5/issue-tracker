@@ -24,6 +24,8 @@ export class IssueService {
     } else {
       const issue = {} as Issue;
       issue.id = Date.now();
+      issue.open = true;
+      issue.new = true;
       return issue;
     }
   }

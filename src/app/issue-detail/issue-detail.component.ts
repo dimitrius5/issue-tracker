@@ -38,9 +38,15 @@ export class IssueDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     return this.issueService.getIssue(id);
   }
+
+  openClose(): boolean {
+    this.issue.open = !this.issue.open;
+    return this.issue.open;
+  }
   Submit(){
     this.issue.title = this.title.nativeElement.value;
     this.issue.desc = this.desc.nativeElement.value;
+    this.issue.new = false;
     console.log(this.issue);
     this.issueService.save(this.issue);
   }

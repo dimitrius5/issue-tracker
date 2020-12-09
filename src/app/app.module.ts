@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { IssuesComponent } from './issues/issues.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
@@ -29,7 +30,8 @@ import { BaseLocalStorage } from '../app/storage/base-local.storage';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule
   ],
   providers: [{
     provide: LocalStorage,

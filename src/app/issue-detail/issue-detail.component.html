@@ -1,4 +1,6 @@
 <div class="container">
+    <mat-chip *ngIf="issue.open && !issue.new" color="primary" selected>Open</mat-chip>
+    <mat-chip *ngIf="!issue.open && !issue.new" color="warn" selected>Closed</mat-chip>
     <h2>New issue</h2>
     <form class="example-form" (ngSubmit)="Submit()">
         <mat-form-field class="example-full-width">
@@ -15,6 +17,8 @@
                 Description is <strong>required</strong>
             </mat-error>
         </mat-form-field>
+        <button *ngIf="!issue.open && !issue.new" mat-raised-button color="primary" (click)="openClose()">Open</button>
+        <button *ngIf="issue.open && !issue.new" mat-raised-button color="warn" (click)="openClose()">Close</button>
         <div class="submit">
             <button mat-raised-button color="primary" type="submit">Submit</button>
         </div>
