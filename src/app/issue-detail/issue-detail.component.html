@@ -1,11 +1,14 @@
 <div class="container">
-    <mat-chip *ngIf="issue.open && !issue.new" color="primary" selected>Open</mat-chip>
-    <mat-chip *ngIf="!issue.open && !issue.new" color="warn" selected>Closed</mat-chip>
-    <h2>New issue</h2>
+    <mat-chip-list aria-label="Issue selection">
+        <mat-chip *ngIf="issue.open && !issue.new" color="primary" selected>Open</mat-chip>
+        <mat-chip *ngIf="!issue.open && !issue.new" color="warn" selected>Closed</mat-chip>
+    </mat-chip-list>
+    <h2 *ngIf="issue.new">New issue</h2>
+    <h2 *ngIf="!issue.new">Edit issue</h2>
     <form class="example-form" (ngSubmit)="Submit()">
         <mat-form-field class="example-full-width">
             <mat-label>Title</mat-label>
-            <input #title type="text"  matInput [formControl]="titleFormControl">
+            <input #title type="text" matInput [formControl]="titleFormControl">
             <mat-error *ngIf="titleFormControl.hasError('required')">
                 Title is <strong>required</strong>
             </mat-error>

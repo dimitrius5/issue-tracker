@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -27,6 +27,7 @@ export class IssueDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private issueService: IssueService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -39,15 +40,19 @@ export class IssueDetailComponent implements OnInit {
     return this.issueService.getIssue(id);
   }
 
-  openClose(): boolean {
+  openClose(): void {
     this.issue.open = !this.issue.open;
-    return this.issue.open;
+    this.issueService.save(this.issue);
   }
+  
   Submit(){
     this.issue.title = this.title.nativeElement.value;
     this.issue.desc = this.desc.nativeElement.value;
     this.issue.new = false;
     console.log(this.issue);
-    this.issueService.save(this.issue);
+    if(this.titleFormControl.valid && this.descFormControl.valid) {
+      this.issueService.save(this.issue);
+      this.router.navigateByUrl('/issues');
+    }
   }
 }

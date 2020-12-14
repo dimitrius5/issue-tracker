@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Issue } from './issue';
 import { LocalStorage } from '../app/storage/local-storage.interface'
-import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 
 @Injectable({
   providedIn: 'root'
