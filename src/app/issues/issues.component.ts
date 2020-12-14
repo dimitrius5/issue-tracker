@@ -3,8 +3,9 @@ import { Issue } from '../issue';
 import { IssueService } from '../issue.service';
 import { from } from 'rxjs';
 
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-issues',
@@ -12,8 +13,9 @@ import {MatSort} from '@angular/material/sort';
   styleUrls: ['./issues.component.sass']
 })
 export class IssuesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'title', 'open', 'created'];
+  displayedColumns: string[] = ['id', 'title', 'desc', 'open', 'created'];
   issues = this.issueService.getAllIssues();
+  dataSource = new MatTableDataSource(this.issues);
   resultsLength = this.issues.length;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -22,10 +24,17 @@ export class IssuesComponent implements AfterViewInit {
   constructor(
     private issueService: IssueService,
   ) {
-   }
+  }
 
-   ngAfterViewInit(): void {
-     console.log(this.issues);
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    console.log(this.issues);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

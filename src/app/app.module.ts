@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { IssuesComponent } from './issues/issues.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
@@ -37,6 +38,7 @@ import { from } from 'rxjs';
     MatChipsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatSortModule,
   ],
   providers: [{
     provide: LocalStorage,
