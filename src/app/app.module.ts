@@ -9,11 +9,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { IssuesComponent } from './issues/issues.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 import { LocalStorage } from '../app/storage/local-storage.interface'
 import { BaseLocalStorage } from '../app/storage/base-local.storage';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { BaseLocalStorage } from '../app/storage/base-local.storage';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [{
     provide: LocalStorage,

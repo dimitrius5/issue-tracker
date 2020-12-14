@@ -25,6 +25,7 @@ export class IssueService {
       issue.id = Date.now();
       issue.open = true;
       issue.new = true;
+      issue.created = new Date();
       return issue;
     }
   }

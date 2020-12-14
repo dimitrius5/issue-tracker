@@ -4,4 +4,5 @@ export interface Issue {
     desc: string;
     open: boolean;
     new: boolean;
+    created: Date;
 }
