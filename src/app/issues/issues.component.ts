@@ -7,17 +7,20 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+const OPEN = 'open';
+const CLOSED = 'closed'
+
 @Component({
   selector: 'app-issues',
   templateUrl: './issues.component.html',
   styleUrls: ['./issues.component.sass']
 })
-
 export class IssuesComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'title', 'desc', 'open', 'created'];
   issues = this.issueService.getAllIssues();
   dataSource = new MatTableDataSource(this.issues);
   resultsLength = this.issues.length;
+  filterValue = '';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,6 +40,10 @@ export class IssuesComponent implements AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  clearFilter() {
+    this.filterValue = '';
+    this.dataSource.filter = '';
+  }
 
 }
 
@@ -44,6 +51,6 @@ export class IssuesComponent implements AfterViewInit {
 export class OpenClosePipe implements PipeTransform {
   transform(value: boolean): string {
     console.log(value)
-    return value ? 'open' : 'closed'
+    return value ? OPEN : CLOSED;
   }
 }

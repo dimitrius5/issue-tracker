@@ -12,6 +12,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 
 import { IssuesComponent } from './issues/issues.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
@@ -41,6 +42,7 @@ import { from } from 'rxjs';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatIconModule,
   ],
   providers: [{
     provide: LocalStorage,
