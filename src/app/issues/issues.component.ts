@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { Issue } from '../issue';
 import { IssueService } from '../issue.service';
 import { from } from 'rxjs';
@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './issues.component.html',
   styleUrls: ['./issues.component.sass']
 })
+
 export class IssuesComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'title', 'desc', 'open', 'created'];
   issues = this.issueService.getAllIssues();
@@ -37,4 +38,12 @@ export class IssuesComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+}
+
+@Pipe({name: 'openClose'})
+export class OpenClosePipe implements PipeTransform {
+  transform(value: boolean): string {
+    console.log(value)
+    return value ? 'open' : 'closed'
+  }
 }

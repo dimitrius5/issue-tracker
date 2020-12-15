@@ -15,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
 
 import { IssuesComponent } from './issues/issues.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+import { OpenClosePipe } from './issues/issues.component';
 import { LocalStorage } from '../app/storage/local-storage.interface'
 import { BaseLocalStorage } from '../app/storage/base-local.storage';
 import { from } from 'rxjs';
@@ -24,7 +25,8 @@ import { from } from 'rxjs';
   declarations: [
     AppComponent,
     IssuesComponent,
-    IssueDetailComponent
+    IssueDetailComponent,
+    OpenClosePipe,
   ],
   imports: [
     BrowserModule,
